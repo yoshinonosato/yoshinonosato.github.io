@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/dracula.min.css">
+        <script>
+            function dispUpdate(name,string){
+                document.getElementById("target_link").href  = 
+                'javascript: (function (d, j, s) {'+
+                's = d.createElement("script");'+
+                's.src = j;'+
+                'd.body.appendChild(s);'+
+                '})('+
+                'document,'+
+                '"'+string+'");';
+                document.getElementById("target_link").innerText="選択:"+name;
+
+                document.getElementById("target_text").innerHTML  = "\r\n"+
+                "\t"+'<pre><code>javascript: (function (d, j, s) {'+"\r\n"+
+                    "\t"+'s = d.createElement("script");'+"\r\n"+
+                "\t"+'s.src = j;'+"\r\n"+
+                "\t"+'d.body.appendChild(s);'+"\r\n"+
+                '})('+"\r\n"+
+                "\t"+'document,'+"\r\n"+
+                "\t"+'"'+string+'"'+"\r\n"+
+                ');</code></pre>';
+
+                hljs.initHighlightingOnLoad();
+            }
+        </script>
+    </head>
+    <body>
+        <p>リンクをドラッグしてブックマークバーへ</p>
+        <a id="target_link" href="target_link">target_link</a>
+        <p id="target_text">Contents</p>
+        
+        <ul>
+            <li><a href="javascript:dispUpdate('test','https://yoshinonosato.github.io/bookmarklet/test.js');">動作確認用</a></li>
+            <li><a href="javascript:dispUpdate('test','https://yoshinonosato.github.io/bookmarklet/aipo.js');">Aipo自動入力</a></li>
+        </ul>
+        </ul>
+        <script>dispUpdate("選択してね","未選択");</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </body>
+</html>
+  
