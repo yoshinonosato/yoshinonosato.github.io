@@ -1,2 +1,2 @@
-# yoshinonosato.github.io
-ブックマークレットとか置きたい
+一応リンクをはっておこう
+https://yoshinonosato.github.io
