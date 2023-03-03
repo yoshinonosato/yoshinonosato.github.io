@@ -10,11 +10,9 @@
                 document.getElementById("target_text").innerHTML = "\r\n" + "\t" + "<pre><code>javascript: (function (d, j, s) {" + "\r\n" + "\t" + 's = d.createElement("script");' + "\r\n" + "\t" + "s.src = j;" + "\r\n" + "\t" + "d.body.appendChild(s);" + "\r\n" + "})(" + "\r\n" + "\t" + "document," + "\r\n" + "\t" + '"' + string + '"' + "\r\n" + ");</code></pre>";
                 hljs.initHighlightingOnLoad();
             }
-
             function init() {
                 dispUpdate("選択してね", "未選択");
                 hljs.initHighlightingOnLoad();
-
                 var get_ul = document.getElementById("list_links");
                 var list_data = [
                     {filename: "test.js", description: "動作確認用"},
