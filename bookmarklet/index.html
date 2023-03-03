@@ -1,42 +1,42 @@
 <html>
-    <head>
-        <title>Bootkmarklet置き場</title>
-        <link rel="stylesheet" href="./css/main.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/dracula.min.css" />
-        <script>
-            function dispUpdate(name, string) {
-                document.getElementById("target_link").href = "javascript: (function (d, j, s) {" + 's = d.createElement("script");' + "s.src = j;" + "d.body.appendChild(s);" + "})(" + "document," + '"' + string + '");';
-                document.getElementById("target_link").innerText = name;
-                document.getElementById("target_text").innerHTML = "\r\n" + "\t" + "<pre><code>javascript: (function (d, j, s) {" + "\r\n" + "\t" + 's = d.createElement("script");' + "\r\n" + "\t" + "s.src = j;" + "\r\n" + "\t" + "d.body.appendChild(s);" + "\r\n" + "})(" + "\r\n" + "\t" + "document," + "\r\n" + "\t" + '"' + string + '"' + "\r\n" + ");</code></pre>";
-                hljs.initHighlightingOnLoad();
-            }
-            function init() {
-                dispUpdate("選択してね", "未選択");
-                hljs.initHighlightingOnLoad();
-                var get_ul = document.getElementById("list_links");
-                var list_data = [
-                    {filename: "test.js", description: "動作確認用"},
-                    {filename: "aipo.js", description: "Aipo自動入力"},
-                    {filename: "twitter_schedule_tweet.js", description: "Twitter予告ツイート入力"},
-                    {filename: "dmm_opener.js", description: "DMM連続open"},
-                ];
-                for (let index = 0; index < list_data.length; index++) {
-                    const element = list_data[index];
-                    const create_li = document.createElement("li");
-                    const anchor = document.createElement("a");
-                    anchor.href = "javascript:dispUpdate('" + list_data[index]["description"] + "','https://yoshinonosato.github.io/bookmarklet/" + list_data[index]["filename"] + "');";
-                    anchor.textContent = list_data[index]["description"];
-                    create_li.appendChild(anchor);
-                    get_ul.appendChild(create_li);
-                }
-            }
-        </script>
-    </head>
-    <body onload="init()">
-        <p>リンクをドラッグしてブックマークバーへ</p>
-        <a id="target_link" href="target_link">target_link</a>
-        <p id="target_text">Contents</p>
-        <ul id="list_links"></ul>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-    </body>
+	<head>
+		<title>Bootkmarklet置き場</title>
+		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/dracula.min.css" />
+		<script>
+			function dispUpdate(name, string) {
+				document.getElementById("target_link").href = "javascript: (function (d, j, s) {" + 's = d.createElement("script");' + "s.src = j;" + "d.body.appendChild(s);" + "})(" + "document," + '"' + string + '");';
+				document.getElementById("target_link").innerText = name;
+				document.getElementById("target_text").innerHTML = "\r\n" + "\t" + "<pre><code>javascript: (function (d, j, s) {" + "\r\n" + "\t" + 's = d.createElement("script");' + "\r\n" + "\t" + "s.src = j;" + "\r\n" + "\t" + "d.body.appendChild(s);" + "\r\n" + "})(" + "\r\n" + "\t" + "document," + "\r\n" + "\t" + '"' + string + '"' + "\r\n" + ");</code></pre>";
+				hljs.initHighlightingOnLoad();
+			}
+			function init() {
+				dispUpdate("選択してね", "未選択");
+				hljs.initHighlightingOnLoad();
+				var get_ul = document.getElementById("list_links");
+				var list_data = [
+					{filename: "test.js", description: "動作確認用"},
+					{filename: "aipo.js", description: "Aipo自動入力"},
+					{filename: "twitter_schedule_tweet.js", description: "Twitter予告ツイート入力"},
+					{filename: "dmm_opener.js", description: "DMM連続open"},
+				];
+				for (let index = 0; index < list_data.length; index++) {
+					const element = list_data[index];
+					const create_li = document.createElement("li");
+					const anchor = document.createElement("a");
+					anchor.href = "javascript:dispUpdate('" + list_data[index]["description"] + "','https://yoshinonosato.github.io/bookmarklet/" + list_data[index]["filename"] + "');";
+					anchor.textContent = list_data[index]["description"];
+					create_li.appendChild(anchor);
+					get_ul.appendChild(create_li);
+				}
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<p>リンクをドラッグしてブックマークバーへ</p>
+		<a id="target_link" href="target_link">target_link</a>
+		<p id="target_text">Contents</p>
+		<ul id="list_links"></ul>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+	</body>
 </html>
