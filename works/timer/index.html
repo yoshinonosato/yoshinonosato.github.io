@@ -37,7 +37,7 @@
 				var timeLeft = (endTime - now) / 1000;
 				if (timeLeft < 0) {
 					clearInterval(timer);
-					document.getElementById("countdown").innerHTML = "End of Time";
+					document.getElementById("countdown").innerHTML = "TimeUp!";
 				} else {
 					var hoursLeft = Math.floor(timeLeft / 3600);
 					var minutesLeft = Math.floor((timeLeft % 3600) / 60);
