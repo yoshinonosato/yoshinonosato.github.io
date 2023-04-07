@@ -31,10 +31,40 @@
 		</style>
 		<script>
 			function countdown() {
-				var endTime = new Date();
-				endTime.setHours(19, 0, 0, 0);
+				var ListTimes = [];
+				var ListParam = ["WorkEndTime", "RestStartTime", "RestEndTime"];
+				ListParam.forEach((element) => {
+					ListTimes[element] = new Date();
+					switch (element) {
+						case "WorkEndTime":
+							ListTimes[element].setHours(19, 0, 0, 0);
+							break;
+						case "RestStartTime":
+							ListTimes[element].setHours(14, 0, 0, 0);
+							break;
+						case "RestEndTime":
+							ListTimes[element].setHours(15, 0, 0, 0);
+							break;
+					}
+				});
+				let url = new URL(window.location.href);
+				ListParam.forEach((element) => {
+					if (url.searchParams.get(element) > 0) {
+						ListTimes[element].setHours(url.searchParams.get(element).slice(0, 2), url.searchParams.get(element).slice(2, 4), url.searchParams.get(element).slice(4, 6));
+					}
+				});
+
 				var now = new Date();
-				var timeLeft = (endTime - now) / 1000;
+				// now.setHours(url.searchParams.get("now").slice(0, 2), url.searchParams.get("now").slice(2, 4), url.searchParams.get("now").slice(4, 6));
+				var timeLeft = 0;
+				if (ListTimes["RestStartTime"].getTime() > now.getTime()) {
+					timeLeft = (ListTimes["RestStartTime"] - now - (ListTimes["RestEndTime"] - ListTimes["RestStartTime"]) + (ListTimes["WorkEndTime"] - ListTimes["RestEndTime"])) / 1000;
+				} else if (ListTimes["RestEndTime"].getTime() > now.getTime()) {
+					timeLeft = (ListTimes["WorkEndTime"] - ListTimes["RestEndTime"]) / 1000;
+				} else if (ListTimes["WorkEndTime"].getTime() > now.getTime()) {
+					timeLeft = (ListTimes["WorkEndTime"] - now) / 1000;
+				}
+
 				if (timeLeft < 0) {
 					clearInterval(timer);
 					document.getElementById("countdown").innerHTML = "TimeUp!";
