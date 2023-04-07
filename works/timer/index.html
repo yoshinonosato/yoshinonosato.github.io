@@ -65,7 +65,7 @@
 					timeLeft = (ListTimes["WorkEndTime"] - now) / 1000;
 				}
 
-				if (timeLeft < 0) {
+				if (timeLeft <= 0) {
 					clearInterval(timer);
 					document.getElementById("countdown").innerHTML = "TimeUp!";
 				} else {
