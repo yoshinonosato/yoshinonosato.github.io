@@ -58,7 +58,7 @@
 				// now.setHours(url.searchParams.get("now").slice(0, 2), url.searchParams.get("now").slice(2, 4), url.searchParams.get("now").slice(4, 6));
 				var timeLeft = 0;
 				if (ListTimes["RestStartTime"].getTime() > now.getTime()) {
-					timeLeft = (ListTimes["RestStartTime"] - now - (ListTimes["RestEndTime"] - ListTimes["RestStartTime"]) + (ListTimes["WorkEndTime"] - ListTimes["RestEndTime"])) / 1000;
+					timeLeft = (ListTimes["RestStartTime"] - now + (ListTimes["WorkEndTime"] - ListTimes["RestEndTime"])) / 1000;
 				} else if (ListTimes["RestEndTime"].getTime() > now.getTime()) {
 					timeLeft = (ListTimes["WorkEndTime"] - ListTimes["RestEndTime"]) / 1000;
 				} else if (ListTimes["WorkEndTime"].getTime() > now.getTime()) {
