@@ -12,6 +12,28 @@ javascript: (function () {
 				).length +
 				")"
 		).selected = true;
+		document
+			.getElementsByClassName("auiSetDate")[0]
+			.querySelectorAll("select")[0]
+			.querySelectorAll("option")
+			.forEach((element) => {
+				if (element["value"] == 10) {
+					element["selected"] = "selected";
+				} else {
+					element["selected"] = "";
+				}
+			});
+		document
+			.getElementsByClassName("auiSetDate")[0]
+			.querySelectorAll("select")[1]
+			.querySelectorAll("option")
+			.forEach((element) => {
+				if (element["value"] == 0) {
+					element["selected"] = "selected";
+				} else {
+					element["selected"] = "";
+				}
+			});
 		document.querySelector("#button_map_add").click();
 		document.querySelector("#report_name").value = "【業務報告】" + today.getFullYear() + "/" + ("0" + (today.getMonth() + 1)).slice(-2) + "/" + ("0" + today.getDate()).slice(-2) + " " + document.querySelector("#mb_settings > span").innerHTML;
 		document.querySelector("#formP-17fd9a8c928-10007 > table > tbody > tr:nth-child(4) > td:nth-child(2) > textarea").value = "本日の作業報告書です。\r\n\r\n\r\n\r\nどうぞよろしくお願いいたします。";
