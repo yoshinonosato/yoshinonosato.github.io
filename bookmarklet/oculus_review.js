@@ -1,11 +1,15 @@
 var reviewStar = [0, 0, 0, 0, 0];
 var reviewText = [[], [], [], [], []];
+var gotUser = [];
 
 var loopId = setInterval(() => {
 	if (document.getElementsByClassName("app-review-pager__button")[1].className.indexOf("button--disabled") < 0) {
 		Array.from(document.getElementsByClassName("app-review")).forEach((element) => {
-			reviewStar[element.getElementsByClassName("bxStars bxStars--white").length - 1]++;
-			reviewText[element.getElementsByClassName("bxStars bxStars--white").length - 1].push([element.getElementsByClassName("button__content")[0].innerText.slice(element.getElementsByClassName("button__content")[0].innerText.indexOf("|") + 2), element.getElementsByClassName("clamped-description__content")[0].innerHTML]);
+			if (gotUser.indexOf(element.getElementsByClassName("bxHeading bxHeading--level-5 app-review__author")[0].innerText) < 0) {
+				reviewStar[element.getElementsByClassName("bxStars bxStars--white").length - 1]++;
+				reviewText[element.getElementsByClassName("bxStars bxStars--white").length - 1].push([element.getElementsByClassName("button__content")[0].innerText.slice(element.getElementsByClassName("button__content")[0].innerText.indexOf("|") + 2), element.getElementsByClassName("clamped-description__content")[0].innerHTML]);
+				gotUser.push(element.getElementsByClassName("bxHeading bxHeading--level-5 app-review__author")[0].innerText);
+			}
 		});
 		document.getElementsByClassName("app-review-pager__button-icon")[1].click();
 	} else {
