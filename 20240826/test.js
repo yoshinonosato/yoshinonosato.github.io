@@ -1,4 +1,6 @@
 var ref = document.referrer;
-console.log(ref);
-
-document.getElementById("text_test").innerHTML = `changed test`;
+if (ref) {
+	document.getElementById("text_test").innerHTML = ref;
+} else {
+	document.getElementById("text_test").innerHTML = `no ref`;
+}
